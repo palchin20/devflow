@@ -47,10 +47,10 @@
   --color-light400_light500: var(--color-light-400);
   --color-dark400_light500: var(--color-dark-400);
   --color-dark400_light900: var(--color-dark-400);
-  --color-light400_light500: var(--color-light-400); */
-
+  --color-light400_light500: var(--color-light-400); 
   --color-light-border: var(--border-light-800);
-  --color-light-border-2: var(--border-light-700);
+  --color-light-border-2: var(--border-light-700);*/
+
   --color-placeholder-text: var(--color-light-400);
 
   /* --shadow-light100_dark100: var(--shadow-light-100);
@@ -171,10 +171,10 @@
   --color-light400_light500: var(--color-light-500);
   --color-dark400_light500: var(--color-light-500);
   --color-dark400_light900: var(--color-light-900);
-  --color-light400_light500: var(--color-light-500); */
-
+  --color-light400_light500: var(--color-light-500); 
   --color-light-border: var(--border-dark-800);
-  --color-light-border-2: var(--border-dark-400);
+  --color-light-border-2: var(--border-dark-400);*/
+
   --color-placeholder-text: var(--color-light-500);
 
   /* --shadow-light100_dark100: var(--shadow-dark-100);
@@ -374,20 +374,26 @@
   }
 }
 
-@utility primary-gradient {
+.primary-gradient {
   background: linear-gradient(
     129deg,
     rgb(255, 112, 0) 0%,
     rgb(226, 153, 95) 100%
   );
 }
+.primary-text-gradient {
+  background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .light-border {
-  border: var(--color-light-border);
+  @apply border-light-800 dark:border-dark-300;
 }
 
 .light-border-2 {
-  border: var(--color-light-border-2);
+  @apply border-light-700 dark:border-dark-400;
 }
 
 .h1-bold {
