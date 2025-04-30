@@ -400,122 +400,122 @@
   @apply placeholder:text-light-400 dark:placeholder:text-light-500;
 }
 
-.h1-bold {
+@utility h1-bold {
   font-size: 30px;
   font-weight: 700;
   line-height: 42px;
   letter-spacing: -0.05em;
 }
 
-.h2-bold {
+@utility h2-bold {
   font-size: 24px;
   font-weight: 700;
   line-height: 31.2px;
 }
 
-.h2-semibold {
+@utility h2-semibold {
   font-size: 24px;
   font-weight: 600;
   line-height: 31.2px;
 }
 
-.h3-bold {
+@utility h3-bold {
   font-size: 20px;
   font-weight: 700;
   line-height: 26px;
 }
 
-.h3-semibold {
+@utility h3-semibold {
   font-size: 20px;
   font-weight: 7600;
   line-height: 24.8px;
 }
 
-.base-medium {
+@utility base-medium {
   font-size: 18px;
   font-weight: 500;
   line-height: 25.2px;
 }
 
-.base-semibold {
+@utility base-semibold {
   font-size: 18px;
   font-weight: 600;
   line-height: 25.2px;
 }
 
-.base-bold {
+@utility base-bold {
   font-size: 18px;
   font-weight: 700;
   line-height: 140%;
 }
 
-.paragraph-regular {
+@utility paragraph-regular {
   font-size: 16px;
   font-weight: 400;
   line-height: 22.4px;
 }
 
-.paragraph-medium {
+@utility paragraph-medium {
   font-size: 16px;
   font-weight: 500;
   line-height: 22.4px;
 }
 
-.paragraph-semibold {
+@utility paragraph-semibold {
   font-size: 16px;
   font-weight: 600;
   line-height: 20.8px;
 }
 
-.body-regular {
+@utility body-regular {
   font-size: 14px;
   font-weight: 400;
   line-height: 19.6px;
 }
 
-.body-medium {
+@utility body-medium {
   font-size: 14px;
   font-weight: 500;
   line-height: 18.2px;
 }
 
-.body-semibold {
+@utility body-semibold {
   font-size: 14px;
   font-weight: 600;
   line-height: 18.2px;
 }
 
-.body-bold {
+@utility body-bold {
   font-size: 14px;
   font-weight: 700;
   line-height: 18.2px;
 }
 
-.small-regular {
+@utility small-regular {
   font-size: 12px;
   font-weight: 400;
   line-height: 15.6px;
 }
 
-.small-medium {
+@utility small-medium {
   font-size: 12px;
   font-weight: 500;
   line-height: 15.6px;
 }
 
-.small-semibold {
+@utility small-semibold {
   font-size: 12px;
   font-weight: 600;
   line-height: 15.6px;
 }
 
-.subtle-medium {
+@utility subtle-medium {
   font-size: 10px;
   font-weight: 500;
   line-height: 13px;
 }
 
-.subtle-regular {
+@utility subtle-regular {
   font-size: 10px;
   font-weight: 400;
   line-height: 13px;

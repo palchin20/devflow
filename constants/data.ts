@@ -116,3 +116,10 @@ export const popularTags = [
     questions: 345,
   },
 ];
+
+export const filters = [
+  { name: 'React', value: 'react' },
+  { name: 'Programming', value: 'programming' },
+  { name: 'Next.js', value: 'next.js' },
+  { name: 'Javascript', value: 'javascript' },
+];
