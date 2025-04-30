@@ -3,68 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
 import TagCard from '../cards/TagCard';
-
-const hotQuestions = [
-  { _id: 1, question: 'What is the best way to learn React?' },
-  { _id: 2, question: 'How to optimize performance in React applications?' },
-  { _id: 3, question: 'What are the differences between React and Vue?' },
-  { _id: 4, question: 'How to manage state in React?' },
-  { _id: 5, question: 'What is the purpose of useEffect in React?' },
-  { _id: 6, question: 'How to handle forms in React?' },
-];
-
-const popularTags = [
-  {
-    _id: 1,
-    name: 'react',
-    questions: 100,
-  },
-  {
-    _id: 2,
-    name: 'typescript',
-    questions: 400,
-  },
-  {
-    _id: 3,
-    name: 'javascript',
-    questions: 1200,
-  },
-  {
-    _id: 4,
-    name: 'next-js',
-    questions: 64,
-  },
-  {
-    _id: 5,
-    name: 'redux',
-    questions: 20,
-  },
-  {
-    _id: 6,
-    name: 'generic',
-    questions: 345,
-  },
-  {
-    _id: 7,
-    name: 'csharp',
-    questions: 345,
-  },
-  {
-    _id: 8,
-    name: 'c++',
-    questions: 345,
-  },
-  {
-    _id: 9,
-    name: 'dotnet',
-    questions: 345,
-  },
-  {
-    _id: 10,
-    name: 'html',
-    questions: 345,
-  },
-];
+import { hotQuestions, popularTags } from '@/constants/data';
 
 const RightSideBar = () => {
   return (

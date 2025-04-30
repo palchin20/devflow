@@ -388,15 +388,15 @@
   -webkit-text-fill-color: transparent;
 }
 
-.light-border {
+@utility light-border {
   @apply border-light-800 dark:border-dark-300;
 }
 
-.light-border-2 {
+@utility light-border-2 {
   @apply border-light-700 dark:border-dark-400;
 }
 
-.placeholder {
+@utility placeholder {
   @apply placeholder:text-light-400 dark:placeholder:text-light-500;
 }
 
