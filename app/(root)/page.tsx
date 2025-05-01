@@ -4,6 +4,7 @@ import ROUTES from '@/constants/routes';
 import { questions } from '@/constants/data';
 import Link from 'next/link';
 import HomeFilter from '@/components/filters/HomeFilter';
+import QuestionCard from '@/components/cards/QuestionCard';
 
 interface SearchParams {
   searchParams: Promise<{ [key: string]: string }>;
@@ -17,12 +18,16 @@ const Home = async ({ searchParams }: SearchParams) => {
       .toLowerCase()
       .includes(query?.toLowerCase());
 
-    const matchesFilter = question.tags.find(
-      (tag) => tag.name.toLowerCase() === filter.toLowerCase()
-    );
+    const matchesFilter = filter
+      ? question.tags.find(
+          (tag) => tag.name.toLowerCase() === filter.toLowerCase()
+        )
+      : true;
 
     return matchesQuery && matchesFilter;
   });
+
+  console.log(filteredQuestions);
 
   return (
     <>
@@ -46,7 +51,7 @@ const Home = async ({ searchParams }: SearchParams) => {
       <HomeFilter />
       <div className='mt-10 flex w-full flex-col gap-6'>
         {filteredQuestions.map((question) => (
-          <h1 key={question._id}>{question.title}</h1>
+          <QuestionCard key={question._id} question={question} />
         ))}
       </div>
     </>

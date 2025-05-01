@@ -10,9 +10,10 @@ export const questions = [
     author: {
       _id: '1',
       name: 'John Doe',
-      avatar: 'https://example.com/avatar.jpg',
+      avatar:
+        'https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg',
     },
-    createdAt: '2023-10-01T12:00:00Z',
+    createdAt: new Date('2023-10-01T12:00:00Z'),
     upvotes: 10,
     answers: 2,
     views: 100,
@@ -28,9 +29,10 @@ export const questions = [
     author: {
       _id: '2',
       name: 'Jane Smith',
-      avatar: 'https://example.com/avatar.jpg',
+      avatar:
+        'https://static.vecteezy.com/system/resources/previews/004/899/680/non_2x/beautiful-blonde-woman-with-makeup-avatar-for-a-beauty-salon-illustration-in-the-cartoon-style-vector.jpg',
     },
-    createdAt: '2023-10-02T12:00:00Z',
+    createdAt: new Date(),
     upvotes: 5,
     answers: 1,
     views: 50,
@@ -46,9 +48,30 @@ export const questions = [
     author: {
       _id: '3',
       name: 'Alice Johnson',
-      avatar: 'https://example.com/avatar.jpg',
+      avatar:
+        'https://static.vecteezy.com/system/resources/previews/004/899/680/non_2x/beautiful-blonde-woman-with-makeup-avatar-for-a-beauty-salon-illustration-in-the-cartoon-style-vector.jpg',
     },
-    createdAt: '2023-10-03T12:00:00Z',
+    createdAt: new Date('2025-01-03T12:00:00Z'),
+    upvotes: 8,
+    answers: 3,
+    views: 75,
+  },
+  {
+    _id: '4',
+    title:
+      'Is it essential to learn JavaScript programming to become a React developer?',
+    description: "I want to learn JavaScript, but I don't know where to start.",
+    tags: [
+      { _id: '1', name: 'JavaScript' },
+      { _id: '2', name: 'React' },
+    ],
+    author: {
+      _id: '3',
+      name: 'Alice Johnson',
+      avatar:
+        'https://static.vecteezy.com/system/resources/previews/004/899/680/non_2x/beautiful-blonde-woman-with-makeup-avatar-for-a-beauty-salon-illustration-in-the-cartoon-style-vector.jpg',
+    },
+    createdAt: new Date('2025-04-03T12:00:00Z'),
     upvotes: 8,
     answers: 3,
     views: 75,
