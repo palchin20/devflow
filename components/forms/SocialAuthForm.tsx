@@ -15,7 +15,7 @@ const SocialAuthForm = () => {
       await signIn(provider, { redirectTo: ROUTES.HOME });
       //   throw new Error('Not implemented.');
     } catch (error) {
-      console.log('Error signing in - ', error);
+      //console.log('Error signing in - ', error);
       toast.error(`An error occurred while submitting the form. - ${error}`);
     }
   };

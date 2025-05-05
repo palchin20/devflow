@@ -27,7 +27,7 @@ const Home = async ({ searchParams }: SearchParams) => {
     return matchesQuery && matchesFilter;
   });
 
-  console.log(filteredQuestions);
+  //console.log(filteredQuestions);
 
   return (
     <>
