@@ -6,10 +6,17 @@ import Link from 'next/link';
 import HomeFilter from '@/components/filters/HomeFilter';
 import QuestionCard from '@/components/cards/QuestionCard';
 import handleError from '@/lib/handlers/error';
+import { ValidationError } from '@/lib/http-error';
+import connectDB from '@/lib/mongoose';
 
 const testError = async () => {
   try {
-    throw new Error('Test Error');
+    await connectDB();
+    // throw new ValidationError({
+    //   title: ['Required'],
+    //   tags: ['JanaScript is not a valid tag.'],
+    // });
+    //throw new Error('Test Error');
   } catch (error) {
     return handleError(error);
   }
@@ -21,7 +28,7 @@ interface SearchParams {
 
 const Home = async ({ searchParams }: SearchParams) => {
   const result = await testError();
-  console.log('TestError: ', result);
+  //console.log('TestError: ', result);
 
   const { query = '', filter = '' } = await searchParams;
 
