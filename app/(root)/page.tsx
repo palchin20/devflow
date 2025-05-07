@@ -5,12 +5,24 @@ import { questions } from '@/constants/data';
 import Link from 'next/link';
 import HomeFilter from '@/components/filters/HomeFilter';
 import QuestionCard from '@/components/cards/QuestionCard';
+import handleError from '@/lib/handlers/error';
+
+const testError = async () => {
+  try {
+    throw new Error('Test Error');
+  } catch (error) {
+    return handleError(error);
+  }
+};
 
 interface SearchParams {
   searchParams: Promise<{ [key: string]: string }>;
 }
 
 const Home = async ({ searchParams }: SearchParams) => {
+  const result = await testError();
+  console.log('TestError: ', result);
+
   const { query = '', filter = '' } = await searchParams;
 
   const filteredQuestions = questions.filter((question) => {

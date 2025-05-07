@@ -17,7 +17,7 @@ export const getDeviconClassName = (techName: string) => {
 
 export const getTimestamp = (date: Date) => {
   const now = new Date();
-  console.log('date', date.toString());
+  // console.log('date', date.toString());
   const secondsAgo = Math.floor((now.getTime() - date.getTime()) / 1000);
 
   const units = [
