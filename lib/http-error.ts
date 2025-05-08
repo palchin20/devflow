@@ -24,8 +24,8 @@ export class ValidationError extends RequestError {
 
   static formatFieldErrors(errors: Record<string, string[]>): string {
     const formattedMessages = Object.entries(errors).map(
-      ({ field, messages }) => {
-        const fieldName = field.charAt(0).toUppercase() + field.slice(1);
+      ([field, messages]) => {
+        const fieldName = field.charAt(0).toUpperCase() + field.slice(1);
         if (messages[0] === 'Required') {
           return `${fieldName} is required.`;
         } else {

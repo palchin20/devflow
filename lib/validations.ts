@@ -8,7 +8,7 @@ export const SignInSchema = z.object({
   password: z
     .string()
     .min(6, 'Password must be at least 6 characters long.')
-    .max(50, 'Password cannot exceep 50 characters.'),
+    .max(50, 'Password cannot exceed 50 characters.'),
 });
 
 export const SignUpSchema = z.object({
@@ -59,4 +59,15 @@ export const AskQuestionSchema = z.object({
     )
     .min(1, 'At least one tag is required.')
     .max(3, 'Cannot add more than 3 tags.'),
+});
+
+export const UserSchema = z.object({
+  name: z.string().min(1, 'Name is required.'),
+  username: z.string().min(3, 'User name must be at least 3 characters long.'),
+  email: z.string().email('Invalid email address.'),
+  bio: z.string().optional(),
+  image: z.string().url('Invalid image URL.').optional(),
+  geography: z.string().optional(),
+  portfolio: z.string().url('Invalid website URL.').optional(),
+  reputation: z.number().int('Reputation is an integer').default(0),
 });

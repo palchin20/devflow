@@ -27,7 +27,7 @@ interface SearchParams {
 }
 
 const Home = async ({ searchParams }: SearchParams) => {
-  const result = await testError();
+  // const result = await testError();
   //console.log('TestError: ', result);
 
   const { query = '', filter = '' } = await searchParams;

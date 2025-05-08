@@ -5,7 +5,7 @@ export interface IUser {
   username: string;
   email: string;
   bio?: string;
-  image: string;
+  image?: string;
   geography?: string;
   // location?: string;
   portfolio?: string;
@@ -20,7 +20,7 @@ const UserSchema = new Schema<IUser>(
     username: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     bio: { type: String },
-    image: { type: String, required: true },
+    image: { type: String },
     // location: { type: String },
     geography: { type: String },
     portfolio: { type: String },
