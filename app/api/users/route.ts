@@ -6,7 +6,7 @@ import { UserSchema } from '@/lib/validations';
 import { APIErrorResponse } from '@/types/global';
 import { NextResponse } from 'next/server';
 
-// Get all Users
+// GET Get all Users
 export async function GET() {
   try {
     await connectDB();
@@ -18,7 +18,7 @@ export async function GET() {
   }
 }
 
-// Create User
+// POST Create User
 export async function POST(request: Request) {
   try {
     await connectDB();
