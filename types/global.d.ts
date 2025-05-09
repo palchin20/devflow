@@ -23,6 +23,10 @@ interface Tag {
   name: string;
 }
 
+interface FetchOptions extends RequestInit {
+  timeout?: number;
+}
+
 type ActionResponse<T = null> = {
   success: boolean;
   data?: T;

@@ -23,7 +23,6 @@ export async function POST(request: Request) {
   try {
     await connectDB();
     const body = await request.json();
-    console.log('request body: ', body);
 
     const validatedData = UserSchema.safeParse(body);
 

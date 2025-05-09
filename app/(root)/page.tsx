@@ -8,10 +8,11 @@ import QuestionCard from '@/components/cards/QuestionCard';
 import handleError from '@/lib/handlers/error';
 import { ValidationError } from '@/lib/http-error';
 import connectDB from '@/lib/mongoose';
+import { api } from '@/lib/api';
 
 const testError = async () => {
   try {
-    await connectDB();
+    return await api.users.getAll();
     // throw new ValidationError({
     //   title: ['Required'],
     //   tags: ['JanaScript is not a valid tag.'],
@@ -27,8 +28,8 @@ interface SearchParams {
 }
 
 const Home = async ({ searchParams }: SearchParams) => {
-  // const result = await testError();
-  //console.log('TestError: ', result);
+  const result = await testError();
+  console.log('Users: ', result);
 
   const { query = '', filter = '' } = await searchParams;
 
