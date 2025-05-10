@@ -9,6 +9,7 @@ import handleError from '@/lib/handlers/error';
 import { ValidationError } from '@/lib/http-error';
 import connectDB from '@/lib/mongoose';
 import { api } from '@/lib/api';
+import { auth } from '@/auth';
 
 const testError = async () => {
   try {
@@ -28,8 +29,11 @@ interface SearchParams {
 }
 
 const Home = async ({ searchParams }: SearchParams) => {
-  const result = await testError();
-  console.log('Users: ', result);
+  const session = await auth();
+  console.log('Session: ', session);
+
+  // const result = await testError();
+  // console.log('Users: ', result);
 
   const { query = '', filter = '' } = await searchParams;
 
