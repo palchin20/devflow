@@ -30,7 +30,7 @@ interface SearchParams {
 
 const Home = async ({ searchParams }: SearchParams) => {
   const session = await auth();
-  console.log('Session: ', session);
+  // console.log('Session: ', session);
 
   // const result = await testError();
   // console.log('Users: ', result);

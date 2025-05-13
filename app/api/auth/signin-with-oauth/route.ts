@@ -14,8 +14,8 @@ export async function POST(request: Request) {
 
   await connectDB();
 
-  const session = await mongoose.startSession();
-  session.startTransaction();
+  const dbSession = await mongoose.startSession();
+  dbSession.startTransaction();
 
   try {
     const validatedData = SignInWithOAuthSchema.safeParse({
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
       trim: true,
     });
 
-    let existingUser = await User.findOne({ email }).session(session);
+    let existingUser = await User.findOne({ email }).session(dbSession);
 
     if (!existingUser) {
       console.log(
@@ -53,7 +53,7 @@ export async function POST(request: Request) {
             image,
           },
         ],
-        { session }
+        { dbSession }
       );
     } else {
       console.log('User found: ', `name: ${name}, image: ${image}`);
@@ -71,7 +71,7 @@ export async function POST(request: Request) {
         await User.updateOne(
           { _id: existingUser._id },
           { $set: updatedData }
-        ).session(session);
+        ).session(dbSession);
       }
     }
 
@@ -79,7 +79,7 @@ export async function POST(request: Request) {
       userId: existingUser._id,
       provider: existingUser.provider,
       providerAccountId: existingUser.providerAccountId,
-    }).session(session);
+    }).session(dbSession);
 
     if (!existingAccount) {
       console.log(
@@ -96,16 +96,16 @@ export async function POST(request: Request) {
             providerAccountId,
           },
         ],
-        { session }
+        { dbSession }
       );
     }
 
-    await session.commitTransaction();
+    await dbSession.commitTransaction();
     return NextResponse.json({ success: true });
   } catch (error: unknown) {
-    await session.abortTransaction();
+    await dbSession.abortTransaction();
     handleError(error, 'api') as APIErrorResponse;
   } finally {
-    session.endSession();
+    dbSession.endSession();
   }
 }

@@ -8,11 +8,20 @@ import connectDB from '../mongoose';
 
 type ActionOptions<T> = {
   params: T;
-  schema: ZodSchema<T>;
+  schema?: ZodSchema<T>;
   authorize?: boolean;
 };
 
-async function action<T>({ params, schema, authorize }: ActionOptions<T>) {
+// 1. Check if params and schema are provided and validated.
+// 2. Check whether the user is authorized.
+// 3. Connect to the Database.
+// 4. Return the params and the sessionStorage.
+
+async function action<T>({
+  params,
+  schema,
+  authorize = false,
+}: ActionOptions<T>) {
   if (params && schema) {
     try {
       schema.parse(params);
@@ -28,13 +37,11 @@ async function action<T>({ params, schema, authorize }: ActionOptions<T>) {
   }
 
   let session: Session | null = null;
-  if (auth) {
+  if (authorize) {
     session = await auth();
     if (!session) return new UnauthorizedError('Unauthorized ...');
   }
-
   await connectDB();
-
   return { params, session };
 }
 

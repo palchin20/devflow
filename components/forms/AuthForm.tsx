@@ -21,11 +21,16 @@ import {
 import { Input } from '@/components/ui/input';
 import ROUTES from '@/constants/routes';
 import Link from 'next/link';
+import { ActionResponse } from '@/types/global';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
+import router from 'next/router';
+import logger from '@/lib/logger';
 
 interface AuthFormProps<T extends FieldValues> {
   schema: ZodType<T>;
   defaultValues: T;
-  onSubmit: (data: T) => Promise<{ success: boolean }>;
+  onSubmit: (data: T) => Promise<ActionResponse>;
   formType: 'SIGN_IN' | 'SIGN_UP';
 }
 
@@ -35,6 +40,8 @@ const AuthForm = <T extends FieldValues>({
   defaultValues,
   onSubmit,
 }: AuthFormProps<T>) => {
+  const router = useRouter();
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
@@ -42,8 +49,21 @@ const AuthForm = <T extends FieldValues>({
   });
 
   // 2. Define a submit handler.
-  const handleSubmit: SubmitHandler<T> = async () => {
-    // TODO: Authenticate user
+  const handleSubmit: SubmitHandler<T> = async (data) => {
+    const result = (await onSubmit(data)) as ActionResponse;
+
+    if (result?.success) {
+      toast.success(
+        formType === 'SIGN_IN'
+          ? 'Signed in successfully.'
+          : 'Signed up successfully.'
+      );
+      router.push(ROUTES.HOME);
+    } else {
+      toast.error(
+        `An error occurred while submitting the form. - ${result?.error?.message}`
+      );
+    }
   };
 
   const buttonText = formType === 'SIGN_IN' ? 'Sign In' : 'Sign Up';
@@ -72,7 +92,7 @@ const AuthForm = <T extends FieldValues>({
                     type={field.name === 'password' ? 'password' : 'text'}
                     {...field}
                     className='paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 no-focus min-h-12 rounded-1.5 border'
-                    placeholder='shadcn'
+                    // placeholder=''
                     {...field}
                   />
                 </FormControl>
@@ -83,6 +103,7 @@ const AuthForm = <T extends FieldValues>({
           />
         ))}
         <Button
+          type='submit'
           disabled={form.formState.isSubmitting}
           className='primary-gradient paragraph-medium min-h-12 w-full rounded-2 px-4 py-3 font-inter !text-light-900'
         >

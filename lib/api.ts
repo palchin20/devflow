@@ -4,15 +4,13 @@ import { use } from 'react';
 import { IAccount } from '@/database/account.model';
 import { create } from 'domain';
 import ROUTES from '@/constants/routes';
+import { API_ACCOUNTS_URL, API_BASE_URL, API_USERS_URL } from '@/constants';
 
 // A sample fetch
 // fetchHandler(`${API_BASE_URL}/accounts/${id}`, {
 //   method: 'PUT',
 //   body: JSON.stringify(accountData),
 // });
-
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000/api';
 
 export const api = {
   auth: {
@@ -27,45 +25,45 @@ export const api = {
       }),
   },
   users: {
-    getAll: () => fetchHandler(`${API_BASE_URL}/users`),
-    getById: (id: string) => fetchHandler(`${API_BASE_URL}/user/${id}`),
+    getAll: () => fetchHandler(`${API_USERS_URL}`),
+    getById: (id: string) => fetchHandler(`${API_USERS_URL}/${id}`),
     getByEmail: (email: string) =>
-      fetchHandler(`${API_BASE_URL}/users/email`, {
+      fetchHandler(`${API_USERS_URL}/email`, {
         method: 'POST',
         body: JSON.stringify({ email }),
       }),
     create: (userData: Partial<IUser>) =>
-      fetchHandler(`${API_BASE_URL}/users`, {
+      fetchHandler(`${API_USERS_URL}`, {
         method: 'POST',
         body: JSON.stringify(userData),
       }),
     update: (id: string, userData: Partial<IUser>) =>
-      fetchHandler(`${API_BASE_URL}/users/${id}`, {
+      fetchHandler(`${API_USERS_URL}/${id}`, {
         method: 'PUT',
         body: JSON.stringify(userData),
       }),
     delete: (id: string) =>
-      fetchHandler(`${API_BASE_URL}/users/${id}`, { method: 'DELETE' }),
+      fetchHandler(`${API_USERS_URL}/${id}`, { method: 'DELETE' }),
   },
   accounts: {
-    getAll: () => fetchHandler(`${API_BASE_URL}/accounts`),
-    getById: (id: string) => fetchHandler(`${API_BASE_URL}/accounts/${id}`),
+    getAll: () => fetchHandler(`${API_ACCOUNTS_URL}`),
+    getById: (id: string) => fetchHandler(`${API_ACCOUNTS_URL}/${id}`),
     getByProvider: (providerAccountId: string) =>
-      fetchHandler(`${API_BASE_URL}/accounts/provider`, {
+      fetchHandler(`${API_ACCOUNTS_URL}/provider`, {
         method: 'POST',
         body: JSON.stringify({ providerAccountId }),
       }),
     create: (accountData: Partial<IAccount>) =>
-      fetchHandler(`${API_BASE_URL}/accounts`, {
+      fetchHandler(`${API_ACCOUNTS_URL}`, {
         method: 'POST',
         body: JSON.stringify(accountData),
       }),
     update: (id: string, accountData: Partial<IAccount>) =>
-      fetchHandler(`${API_BASE_URL}/accounts/${id}`, {
+      fetchHandler(`${API_ACCOUNTS_URL}/${id}`, {
         method: 'PUT',
         body: JSON.stringify(accountData),
       }),
     delete: (id: string) =>
-      fetchHandler(`${API_BASE_URL}/accounts/${id}`, { method: 'DELETE' }),
+      fetchHandler(`${API_ACCOUNTS_URL}/${id}`, { method: 'DELETE' }),
   },
 };

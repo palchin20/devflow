@@ -1,6 +1,8 @@
 'use client';
 import AuthForm from '@/components/forms/AuthForm';
+import { signInWithCredentials } from '@/lib/actions/auth.action';
 import { SignInSchema } from '@/lib/validations';
+import { signIn } from 'next-auth/react';
 import React from 'react';
 
 const SignIn = () => {
@@ -9,7 +11,7 @@ const SignIn = () => {
       formType='SIGN_IN'
       schema={SignInSchema}
       defaultValues={{ email: '', password: '' }}
-      onSubmit={(data) => Promise.resolve({ success: true, data })}
+      onSubmit={signInWithCredentials}
     />
   );
 };
