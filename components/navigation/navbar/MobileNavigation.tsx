@@ -56,21 +56,17 @@ const MobileNavigation = async () => {
             <div className='flex flex-col gap-3'>
               {userId ? (
                 <SheetClose asChild>
-                  <form
-                    action={async () => {
+                  <Button
+                    onClick={async () => {
                       'use server';
                       console.log('Signing out user: ', userId);
                       await signOut();
                     }}
+                    className='base-medium w-full !bg-transparent px-4 py-3'
                   >
-                    <Button
-                      type='submit'
-                      className='base-medium w-full !bg-transparent px-4 py-3'
-                    >
-                      <LogOut className='size-6 text-black dark:text-white' />
-                      <span className='text-dark300_light900'>Logout</span>
-                    </Button>
-                  </form>
+                    <LogOut className='size-6 text-black dark:text-white' />
+                    <span className='text-dark300_light900'>Logout</span>
+                  </Button>
                 </SheetClose>
               ) : (
                 <>
